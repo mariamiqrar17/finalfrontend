@@ -1,29 +1,23 @@
-"use client";
 import { Button, Nav, NavItem } from "reactstrap";
 import Logo from "./Logo";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 
-interface Navigation {
+interface NavigationItem {
   title: string;
   href: string;
   icon: string;
 }
 
-const navigation: Navigation[] = [
+const navigation: NavigationItem[] = [
   {
     title: "Dashboard",
     href: "/",
     icon: "bi bi-speedometer2",
   },
   {
-    title: "About",
-    href: "/about",
-    icon: "bi bi-people",
-  },
-  {
-    title: "Alert",
-    href: "/ui/alerts",
+    title: "News",
+    href: "/news",
     icon: "bi bi-bell",
   },
   {
@@ -41,7 +35,11 @@ const navigation: Navigation[] = [
     href: "/ui/cards",
     icon: "bi bi-card-text",
   },
-  
+  {
+    title: "Grid",
+    href: "/ui/grid",
+    icon: "bi bi-columns",
+  },
   {
     title: "Table",
     href: "/ui/tables",
@@ -52,17 +50,30 @@ const navigation: Navigation[] = [
     href: "/ui/forms",
     icon: "bi bi-textarea-resize",
   },
-  
-  
+  {
+    title: "Breadcrumbs",
+    href: "/ui/breadcrumbs",
+    icon: "bi bi-link",
+  },
+  {
+    title: "About",
+    href: "/about",
+    icon: "bi bi-people",
+  },
 ];
 
-const Sidebar: React.FC<any> = ({ showMobilemenu }) => {
+const Sidebar: React.FC<{ showMobilemenu: () => void }> = ({
+  showMobilemenu,
+}) => {
+  const router = useRouter();
+  const location = router.pathname;
+
   return (
     <div className="p-3">
-      <div className="flex items-center">
+      <div className="d-flex align-items-center lg:hidden 2xl:hidden md:hidden">
         <Logo />
         <Button
-          close
+          
           size="sm"
           className="ms-auto d-lg-none"
           onClick={showMobilemenu}
@@ -72,16 +83,22 @@ const Sidebar: React.FC<any> = ({ showMobilemenu }) => {
         <Nav vertical className="sidebarNav">
           {navigation.map((navi, index) => (
             <NavItem key={index} className="sidenav-bg">
-              <Link href={navi.href} className="">
-                <i className={navi.icon}></i>
-                <span className="ms-3 d-inline-block p-2 cursor-pointer">
-                  {navi.title}
-                </span>
+              <Link href={navi.href}>
+                <div
+                  className={
+                    location === navi.href
+                      ? "text-primary nav-link py-3"
+                      : "nav-link text-secondary py-3"
+                  }
+                >
+                  <i className={navi.icon}></i>
+                  <span className="ms-3 d-inline-block">{navi.title}</span>
+                </div>
               </Link>
             </NavItem>
           ))}
           <Button
-            color="primary"
+            color="secondary"
             tag="a"
             target="_blank"
             className="mt-3"
