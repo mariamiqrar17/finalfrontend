@@ -78,7 +78,7 @@ const Feeds = () => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = FeedData.slice(indexOfFirstItem, indexOfLastItem);
 
-  const handlePageChange = (pageNumber) => {
+  const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
 
