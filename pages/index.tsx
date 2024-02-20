@@ -103,7 +103,7 @@ export default function Home(): JSX.Element {
             <TopCards
               bg=""
               title="Authors"
-              subtitle={<span className="text-black">Total Authors</span>}
+              subtitle={"Total Authors"} // Convert JSX element to string
               earning={AuthorsCount.toString()}
               icon="bi bi-person-circle"
             />
@@ -112,17 +112,16 @@ export default function Home(): JSX.Element {
             <TopCards
               bg=" text-warning"
               title="Total Country"
-              subtitle={<span className="text-black">Total Country</span>}
+              subtitle={"Total Country"} // Convert JSX element to string
               earning={totalCountryCount.toString()}
               icon="bi bi-people"
             />
           </Col>
-
           <Col sm="6" lg="3">
             <TopCards
               bg=" text-info"
               title="Total Participants"
-              subtitle={<span className="text-black">Total Participants</span>}
+              subtitle={"Total Participants"} // Convert JSX element to string
               earning={totalParticipantsCount.toString()}
               icon="bi bi-bar-chart-line"
             />
