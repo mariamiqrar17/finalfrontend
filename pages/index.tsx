@@ -63,7 +63,7 @@ export default function Home(): JSX.Element {
   const [totalCountryCount, setTotalCountryCount] = useState(0);
 
   useEffect(() => {
-    fetch("http://localhost:3000/articles")
+    fetch("https://finalbackend-rho.vercel.app/articles")
       .then((response) => response.json())
       .then((data) => {
         let Authors = new Set();

@@ -16,7 +16,7 @@ const SalesChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/articles");
+        const response = await fetch("https://finalbackend-rho.vercel.app/articles");
         if (!response.ok) {
           throw new Error("Failed to fetch blog data");
         }

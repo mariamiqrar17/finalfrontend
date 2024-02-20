@@ -26,7 +26,7 @@ const ProjectTables: React.FC = () => {
   const itemsPerPage = 5;
 
   useEffect(() => {
-    fetch("http://localhost:3000/articles")
+    fetch("https://finalbackend-rho.vercel.app/articles")
       .then((response) => response.json())
       .then((data: TableDataItem[]) => setTableData(data))
       .catch((error) => console.error("Error fetching data:", error));

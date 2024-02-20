@@ -25,7 +25,7 @@ const News: React.FC = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/articles"
+          "https://finalbackend-rho.vercel.app/articles"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch data");
@@ -70,7 +70,7 @@ const News: React.FC = () => {
         return; // Exit function if user is not authenticated
       }
       const response = await fetch(
-        `http://localhost:3000/comments/${articleId}`, 
+        `https://finalbackend-rho.vercel.app/comments/${articleId}`, 
         {
           method: "POST",
           headers: {
